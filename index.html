@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="./styles.css"/>
+</head>
+<body>
+    <div class="control-panel">
+        <img src="Logo/service_logo.png" alt="Service Logo" class="logo" width="70px" height="70px">
+        <button class="button" onclick="openForm()">Добавить товар</button>
+    </div>
+
+    <div class="filter-panel">
+        <label for="manufacturerFilter">Фильтр по производителю:</label>
+        <select id="manufacturerFilter">
+            <option value="">Все</option> 
+        </select>
+
+        <label for="searchBox">Поиск по названию товара:</label>
+        <input type="text" id="searchBox" placeholder="Введите название или описание товара" width="100">
+
+        <button id="sortAscButton" class="button">Сортировать по возрастанию</button>
+        <button id="sortDescButton" class="button">Сортировать по убыванию</button>
+        <p id="recordsCountText" class="records-count"></p>
+    </div>
+
+    <h3 class="product-title">Список товаров</h3>
+    <div id="product-list" class="product-grid"></div>
+    
+    <div class="form-popup" id="myForm">
+        <form id="product-form" class="form">
+            <h3 style="text-align: center; color: #555; font-size: 18px;">Добавить новый товар</h3>
+            
+            <input type="text" name="title" placeholder="Введите название товара" autocomplete="off" required>
+            <input type="text" name="cost" placeholder="Введите цену товара" autocomplete="off" required>
+            <textarea name="description" placeholder="Введите описание товара"></textarea>
+            <input type="text" name="mainimagepath" placeholder="Введите путь к изображению" autocomplete="off">
+            
+            <!-- Поле для выбора производителя -->
+            <label for="manufacturer">Производитель:</label>
+            <select name="manufacturer" id="manufacturer" required>
+                <option value="">Выберите производителя</option>
+            </select>
+            
+            <!-- Поле для выбора статуса товара -->
+            <label for="isActive">Статус товара:</label>
+            <select id="isActive" name="isactive">
+                <option value="1">Активен</option>
+                <option value="0">Неактивен</option>
+            </select>
+            
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit" class="button">Сохранить</button>
+                <button type="button" class="button cancel" onclick="closeForm()">Закрыть</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="form-popup" id="editForm">
+        <form id="edit-product-form" class="form">
+            <h3 style="text-align: center; color: #555; font-size: 18px;">Редактировать товар</h3>
+            
+            <input type="text" name="title" placeholder="Введите название товара" autocomplete="off" required>
+            <input type="text" name="cost" placeholder="Введите цену товара" autocomplete="off" required>
+            <textarea name="description" placeholder="Введите описание товара"></textarea>
+            <input type="text" name="mainimagepath" placeholder="Введите путь к изображению" autocomplete="off">
+            
+            <!-- Поле для выбора производителя -->
+            <label for="edit-manufacturer">Производитель:</label>
+            <select name="manufacturer" id="edit-manufacturer" required>
+                <option value="">Выберите производителя</option>
+            </select>
+            
+            <!-- Поле для выбора статуса товара -->
+            <label for="edit-isActive">Статус товара:</label>
+            <select id="edit-isActive" name="isactive">
+                <option value="1">Активен</option>
+                <option value="0">Неактивен</option>
+            </select>
+            
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit" class="button">Сохранить</button>
+                <button type="button" class="button cancel" onclick="closeEditForm()">Закрыть</button>
+            </div>
+        </form>
+    </div>
+    
+    <p id="recordsCountText" class="records-count"></p>
+
+    <script src="./api.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>
